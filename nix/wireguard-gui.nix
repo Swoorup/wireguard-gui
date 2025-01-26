@@ -3,7 +3,7 @@
   stdenv,
   rustPlatform,
   fetchNpmDeps,
-  cargo-tauri_1,
+  cargo-tauri,
   darwin,
   glib-networking,
   libsoup,
@@ -28,7 +28,8 @@ rustPlatform.buildRustPackage rec {
 
   npmDeps = fetchNpmDeps {
     inherit pname version src;
-    hash = "sha256-5nteidw81/EUc3TJT3WFC+m3pN/ZuUeepYKdvn/VwzA=";
+    # hash = "sha256-5nteidw81/EUc3TJT3WFC+m3pN/ZuUeepYKdvn/VwzA=";
+    hash = "sha256-9xp7RJcKbjR7kJnkMvPx3dj3z+ejmBOP61YY79n0K5U=";
   };
 
   cargoRoot = "src-tauri";
@@ -42,7 +43,7 @@ rustPlatform.buildRustPackage rec {
     [
       nodejs_22
       npmHooks.npmConfigHook
-      cargo-tauri_1.hook
+      cargo-tauri.hook
       pkg-config
     ]
     ++ lib.optionals stdenv.hostPlatform.isLinux [ wrapGAppsHook3 ]
